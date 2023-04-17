@@ -28,19 +28,6 @@ jobs: # The jobs that run in this workflow
           body: | # The body of the comment is a message thanking the user for opening the issue.
            Thanks for opening this issue! We'll take a look as soon as possible.
 # Comment on when an issue is closed
-      - name: Closed Issue Message
-        on:
-    issues:
-       types: [closed]
-       jobs:
-    auto_comment:
-        runs-on: ubuntu-latest
-        steps:
-        - uses: aws-actions/closed-issue-message@v1
-            with:
-            # These inputs are both required
-            repo-token: "${{ secrets.GITHUB_TOKEN }}"
-            message: "Issue resolved." 
 
 # Comment on when an users opens the first pull request 
   
