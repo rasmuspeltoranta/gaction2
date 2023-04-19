@@ -5,6 +5,8 @@ on: pull_request
 jobs:
   example_comment_pr:
     runs-on: ubuntu-latest
+    permissions: # This job requires write access to issues in order to add labels and comment.
+      pull-requests: write
     name: An example job to comment a PR
     steps:
       - name: Checkout
