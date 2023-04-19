@@ -28,10 +28,16 @@ jobs: # The jobs that run in this workflow
            Thanks for opening this issue! We'll take a look as soon as possible.
 # Comment on when an issue is closed
       - name: comment on a closed issue
+        on:
+         issues:
+          types:
+          - closed
        
-        uses: aws-actions/closed-issue-message@v1
+        uses: peter-evans/create-or-update-comment@v1
         
         with:
-         repo-token: "${{ secrets.GITHUB_TOKEN }}" 
-         body: "This issue is resolved."
+         issue-number: ${{ github.event.issue.number }} 
+         body: | # The body of the comment is a message thanking the user for opening the issue.
+            the issue is now resolved
 # Comment on when an users opens the first pull request 
+   
